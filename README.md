@@ -4,7 +4,7 @@
 3) $ source .venv/bin/activate 
 4) $ pip install flask flask_sqlalchemy pymysql pyyaml
 5) $ flask run
-6) <go to ip>
+6) go to ip
 
 
 # A Todo List demo App
