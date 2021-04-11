@@ -1,0 +1,215 @@
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Sans-serif;
+    border-collapse:collapse;
+    display : table;
+}
+
+#container {
+    min-height:100%;
+    position:relative;
+ }
+#page-background {
+    background-repeat: no-repeat;
+    position: absolute; 
+    background-size: contain;
+    background-position: center center;
+    z-index: -1;
+    width: 20em;
+    height: 10em;
+    height: 100%;
+    width: 100%;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+li {
+    float: left;
+  }
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+li a:hover {
+    background-color: #111;
+  }
+
+
+
+h1  {
+    color: grey;
+    text-align: left;
+    margin-left: 20px;
+    }
+
+.search-container   {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.dashboard  {
+    margin-left: 20px;
+    width:15%;
+    height: 100%;
+    background: rgb(202, 201, 201);
+    display: block;
+    float: left;
+    
+}
+
+.dashboard label   {
+    margin-left: 10px;
+    display: inline-block;
+    padding-top: 10px;
+    font-size: 1rem;
+}
+.dashboard input   {
+    margin: 10px;
+}
+
+.dashboard span::after {
+    padding-left: 5px;
+  }
+  
+.dashboard  input:invalid + span::after {
+    content: '✖';
+  }
+  
+.dashboard  input:valid+span::after {
+    content: '✓';
+  }
+
+.dashboard button, .dashboard input[type = submit] {
+    width: 50%;
+    padding: 10px;
+    margin-left: 10px;
+    background: hsl(120, 22%, 67%);
+    color: white;
+    font-size: 15px;
+    border: 1px hidden green;
+    cursor: pointer;
+  }  
+
+.dashboard button:hover, .dashboard input[type = submit]:hover {
+    height: 100%;
+    background: rgb(112, 177, 112);
+    
+  }
+
+.display_result {
+    display: block; 
+    width: 70%; 
+    float: left;
+    margin-left: 50px;
+    background-color: rgba(184, 178, 178, 0.7);
+}
+
+td  {
+  text-align: center;
+}
+.reviews    {
+    border-radius: 25px;
+    background-color: rgb(241, 234, 166, 0.75);
+    margin: 25px;
+    margin-left: 150px;
+    margin-right: 400px;
+}
+
+
+input[type='text'],
+textarea {
+  display: block;
+  width: 90%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+
+  line-height: 1.4em;
+}
+
+.popup .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:1;
+  display:none;
+}
+ 
+.popup .content {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:#fff;
+  width:500px;
+  height:250px;
+  z-index:2;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+  font-family:"Open Sans",sans-serif;
+}
+ 
+.popup .close-btn {
+  cursor:pointer;
+  position:absolute;
+  right:20px;
+  top:20px;
+  width:30px;
+  height:30px;
+  background:#222;
+  color:#fff;
+  font-size:25px;
+  font-weight:600;
+  line-height:30px;
+  text-align:center;
+  border-radius:50%;
+}
+ 
+.popup.active .overlay {
+  display:block;
+}
+ 
+.popup.active .content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+
+.foot    {
+    position: absolute; 
+    bottom: 0; 
+    width: 100%;
+    height: 1px;
+    text-align: center;
+}
+.foot a{
+    text-align: center;
+    display : inline;
+    background-color:gray;
+    height: 1px;
+    color: honeydew;
+}
+

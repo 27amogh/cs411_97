@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/mystyle.css') }}"
+    />
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('lookup_reviews') }}">Reviews</a></li>
+    </ul>
+    <div id="container">
+
+        <p style="padding-left: 175px; margin: -10px;"><b>Comment</b></p>
+    <div class="reviews" style="margin-right: 150px;">
+        <table id="comment_table" class="display compact" style="width: 100%">
+            <thead>
+              <tr>
+                <th class="listing-id">Listing</th>
+                <th class="review_id">Review ID</th>
+                <th class="date">Date</th>
+                <th class="reviewer_id">Reviewer ID</th>
+                <th class="reviewer_name">Name</th>
+                <th class="comments">Comment</th>
+                <th class="operations">Operations</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              {% for record in data_list %}
+              <tr style="line-height: 20px;">
+                <td class="listing-id">{{record.listing_id}}</td>
+                <td class="review_id">{{record.review_id}}</td>
+                <td class="date">{{record.date}}</td>
+                <td class="reviewer_id">{{record.reviewer_id}}</td>
+                <td class="reviewer_name">{{record.reviewer_name}}</td>
+                <td width = 30% style="text-align: justify;"><p><small>{{record.comment}}</small></p></td>
+                <td class="operations"><button class="update_btn" onclick="togglePopup();search_nearest(this);" style="margin-right: 10px;">Update</button><button class="delete_btn">Delete</button></p></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+
+    <div style="padding-left: 20px;" class="reviews">
+        <p style="padding-top: 10px;"><b>Look up the historical reviews</b></p>
+        <form action="{{ url_for('lookup_reviews') }}" class="form_lookup" method="POST">
+            <label for="fname">reviewer_id: </label>
+            <input type="text" id="reviewer_id" name="reviewer_id"><br><br>
+            <label for="lname">reviewer_name: </label>
+            <input type="text" id="reviewer_name" name="reviewer_name"><br>
+            <input type="submit" value="Submit" style="background-color: dimgray;color: white; margin: 5px;">
+        </form>
+    </div>
+
+
+        <div class="popup" id="popup-1">
+            <div class="overlay"></div>
+            <div class="content">
+              <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <form action="{{ url_for('update_reviews') }}" class="form_update" method="POST">
+                  <p><label for="new_comment">New Coment</label></p>
+                  <textarea rows="5" cols="50" id = "new_comment" name="new_comment"></textarea>
+                  <input type="hidden" id="update_review_id" name="update_review_id">
+                  <p><input type="submit" value="Update Comment"></p>
+                </form> 
+            </div>
+          </div>
+    
+          <br><br><div><button button class="update_btn" onclick="togglePopup()" >Update</button></div><br><br>
+          <div><button button class="update_btn" onclick="togglePopup()" >Update</button></div>
+
+    </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='script/reviews.js')}}"></script>
+</body>
+</html>

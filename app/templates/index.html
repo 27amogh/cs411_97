@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Version by Kexin</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/mystyle.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css"
+    />
+  </head>
+  <body>
+    
+    <ul>
+      <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('go_reviews') }}">Reviews</a></li>
+    </ul>
+    <div id="container">
+    <div
+      id="page-background"
+      style="background-image:  url({{url_for('static',filename = '/img/chicago.jpg')}})"
+    ></div>
+    
+    <h1>CHICAGO AIRBNB PORTAL</h1>
+    <div class="search-container">
+      <form name="passfeature" action="{{ url_for('search') }}" method="POST">
+        <div class="dashboard">
+          <label for="check-in date">CHECK IN</label>
+          <br />
+          <input
+            id="check-in"
+            name="checkin_date"
+            type="date"
+            placeholder="YYYY-MM-DD"
+            onchange="setEndDate()"
+            required
+          />
+          <span class="validity"></span>
+          <br />
+          <label for="check-out date">CHECK OUT</label>
+          <br />
+          <input
+            id="check-out"
+            name="checkout_date"
+            type="date"
+            placeholder="YYYY-MM-DD"
+            required
+          />
+          <span class="validity"></span>
+
+          <br />
+          <button
+            type="button"
+            id="add_guest"
+            style="
+              width: 50px;
+              border-radius: 25px;
+              font-size: large;
+              margin-top: 15px;
+            "
+            onClick="onClick_add()"
+          >
+            + <i class="fa fa-user"></i>
+          </button>
+          <label><a name="clicks" id="clicks">0</a></label>
+          <input type="hidden" id = "num_guest" value = 0 name="num_guest"/>
+          <button
+            type="button"
+            id="reduce_guest"
+            style="width: 50px; border-radius: 25px; font-size: large"
+            onClick="onClick_reduce()"
+          >
+            - <i class="fa fa-user"></i>
+          </button>
+
+          <p>
+            <input id="submit_btn" type="submit", value="Search">
+          </input>
+          </p>
+        </div>
+      </form>
+
+      <div class="display_result">
+        <table id="result_table" class="display compact" style="width: 100%">
+          <thead>
+            <tr>
+              <th class="listing-id">Listing</th>
+              <th class="price">Price</th>
+              <th class="description">Description</th>
+              <th class="room_type">Room Type</th>
+              <th class="property_type">Property Type</th>
+              <th class="bedrooms">Bedrooms</th>
+              <th class="beds">Beds</th>
+              <th class="pic-url">Picture</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for listing in data_list %}
+            <tr>
+              <td>{{listing.listing_id}}</td>
+              <td>{{listing.price}}</td>
+              <td><p style="font-size: small;">{{listing.description}}<p></p></td>
+              <td>{{listing.room_type}}</td>
+              <td>{{listing.property_type}}</td>
+              <td>{{listing.bedrooms}}</td>
+              <td>{{listing.beds}}</td>
+              <td><img src="{{listing.picture_url}}"  width="200" height="150"/></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="foot">
+      <p><small> Copyright &copy; Team97-SQLphobia by @kexiny5</small></p>
+      <a href="http://insideairbnb.com/get-the-data.html">DATA SOURCE</a>
+    </div>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"
+    ></script>
+    <script src="{{ url_for('static', filename='script/main.js')}}"></script>
+    
+  </body>
+</html>
