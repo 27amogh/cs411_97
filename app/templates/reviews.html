@@ -56,7 +56,7 @@
                 <td class="date">{{record.date}}</td>
                 <td class="reviewer_id">{{record.reviewer_id}}</td>
                 <td class="reviewer_name">{{record.reviewer_name}}</td>
-                <td width = 30% style="text-align: justify;"><p><small>{{record.comment}}</small></p></td>
+                <td width = 30% style="text-align: justify;" class="comment"><p><small>{{record.comment}}</small></p></td>
                 <td class="operations"><button class="update_btn" onclick="togglePopup();search_nearest(this);" style="margin-right: 10px;">Update</button><button class="delete_btn"  onclick="search_nearest(this)">Delete</button></p></td>
               </tr>
               {% endfor %}
