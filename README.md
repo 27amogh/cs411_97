@@ -1,6 +1,6 @@
 # ** INSTRUCTIONS ** #
 1) $ cd cs411_97
-2) $ python -m venv .venv
+2) $ python3 -m venv .venv
 3) $ source .venv/bin/activate 
 4) $ pip install flask flask_sqlalchemy pymysql pyyaml
 5) $ flask run
